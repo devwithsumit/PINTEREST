@@ -1,0 +1,32 @@
+<%- include  ('./partials/header_cdn.ejs') %>
+
+<div id="main" class="px-10">
+  <%- include ('./partials/profile_nav.ejs') %>
+
+
+  <div class="profile-section w-full py-10 flex items-center justify-center px-10">
+    <div class="w-full text-4xl md:w-[30%] h-full flex flex-col items-center justify-center">
+      <a class="mb-2 p-2 w-20 aspect-square text-center rounded-full bg-fuchsia-600 hover:bg-fuchsia-700 flex items-center justify-center text-white uppercase"><%= user.fullname.charAt(0) %></a>
+      <div class="name font-semibold"><%= user.fullname %></div>
+      <p class="my-2 text-center text-base text-gray-400"> @ <%= user.email.split("@")[0] %></p>
+      <div class="flex mt-2 font-medium items-center gap-2">
+        <a href="/share" class="px-5 py-2 text-center rounded-full text-base bg-gray-200 flex items-center justify-center capitalize">Share</a>
+        <a href="/edit" class="px-5 py-2 text-center rounded-full text-base bg-gray-200 flex items-center justify-center capitalize">Edit Profile</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="pins-nav flex items-start justify-center gap-4">
+    <a href="#" class="font-semibold px-2 active inline text-lg capitalize text-center pb-2 hover:border-opacity-100 border-b-2 border-black w-fit">created</a>
+    <a href="/profile/saved" class="font-semibold px-2 inline text-lg capitalize text-center hover:bg-gray-200 hover:rounded-md hover:border-opacity-0 border-b-2 border-opacity-0 border-black w-fit">saved</a>
+  </div>
+  <div class="created grid mt-10">
+    <% posts.reverse().forEach(post=>{ %>
+    <div class="grid-item">
+      <img src="/uploads/<%= post.image %>" />
+    </div>
+    <% }) %>
+  </div>
+</div>
+
+<%- include  ('./partials/footer_cdn.ejs') %>

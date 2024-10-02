@@ -1,0 +1,68 @@
+<%- include  ('./partials/header.ejs') %>
+
+
+<div id="main" class="px-10 max-h-screen flex flex-col">
+  <%- include  ('./partials/navbar.ejs') %>
+
+  <!-- Create Pin Title and button -->
+  <div class="flex justify-between items-center font-semibold py-4 pl-10">
+    <h1 class="text-2xl">Create Pin</h1>
+    <a href="javascript:void(0);" id="publish-btn" class="bg-green-600 text-white px-5 py-3 flex items-center justify-center rounded-full whitespace-nowrap capitalize hover:bg-green-700">Publish</a>
+  </div>
+
+  <!-- File Upload Section -->
+  <form id="create-pin-form" method="post" action="/publish-pin" enctype="multipart/form-data" class="flex flex-grow pt-6 pl-16 overflow-y-auto border-t border-neutral-400">
+    <div class="wrapper-container w-2/5 px-10 pb-10">
+      <div class="file-input flex bg-gray-100 flex-col h-full w-full items-center justify-center relative  rounded-3xl border-2 border-dashed border-gray-300">
+        <input name="image" type="file" class="absolute inset-0 opacity-1 cursor-pointer" />
+        <div class="flex flex-col items-center">
+          <div class="w-10 h-10 bg-gray-300 rounded-full flex items-center justify-center mb-4">
+            <!-- Upload Icon -->
+            <svg class="w-6 h-6 -rotate-90 text-gray-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M12 5l7 7-7 7"></path>
+            </svg>
+          </div>
+          <p class="text-gray-800 text-lg">Choose a file or drag and drop it here</p>
+        </div>
+        <p class="absolute bottom-10 w-4/5 text-sm text-center text-gray-500">We recommend using high quality .jpg files less than 20 MB or .mp4 files less than 200 MB.</p>
+      </div>
+      <!-- Save from URL Button -->
+      <button class="mt-4 mb-6 w-full bg-gray-200 text-gray-700 p-3 rounded-3xl">Save from URL</button>
+    </div>
+    <!-- Details area -->
+    <div class="details-area w-3/5 grid gap-4">
+      <div class="title-div">
+        <label for="title" class="block text-sm font-light text-gray-700 mb-1">Title</label>
+        <input id="title" required name="title" type="text" placeholder="Add a title" class="border border-gray-300 p-3 w-full rounded-xl" />
+      </div>
+      <div class="desc-div">
+        <label for="description" class="block text-sm font-light text-gray-700 mb-1">Description</label>
+        <textarea name="caption" id="description" placeholder="Add a detailed description" class="border border-gray-300 p-3 w-full rounded-xl h-28"></textarea>
+      </div>
+      <div class="link-div">
+        <label for="link" class="block text-sm font-light text-gray-700 mb-1">Link</label>
+        <input name="link" id="link" type="url" placeholder="Add a link" class="border border-gray-300 p-3 w-full rounded-xl" />
+      </div>
+      <div class="board-div">
+        <label for="board" class="block text-sm font-light text-gray-700 mb-1">Board</label>
+        <select id="board" class="border border-gray-300 p-3 w-full rounded-xl">
+          <option>Choose a board</option>
+          <option>Board 1</option>
+          <option>Board 2</option>
+        </select>
+      </div>
+      <div class="tags-div">
+        <label for="tags" class="block text-sm font-light text-gray-700 mb-1">Tags</label>
+        <input id="tags" type="text" placeholder="Search for a tag" class="border border-gray-300 p-3 w-full rounded-xl" />
+      </div>
+    </div>
+  </form>
+
+</div>
+<script>
+  document.getElementById('publish-btn').addEventListener('click', function() {
+    document.getElementById('create-pin-form').submit();
+  });
+</script>
+
+<%- include  ('./partials/footer.ejs') %>
