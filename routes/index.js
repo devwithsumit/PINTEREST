@@ -15,7 +15,6 @@ router.get('/', async function (req, res, next) {
   if (req.cookies.token) {
     isLoggedin = true;
     let decoded = jwt.verify(req.cookies.token, process.env.JWT_KEY)
-    // console.log(decoded);
     user = await userModel
       .findOne({ email: decoded.email })
       .select("-password");
@@ -25,11 +24,15 @@ router.get('/', async function (req, res, next) {
 });
 
 router.get('/signup', function (req, res, next) {
-  res.render('signup');
+  let error = req.flash("error");
+  let success = req.flash("success");
+  res.render('signup', {error, success});
 });
 
 router.get('/login', function (req, res, next) {
-  res.render('login');
+  let error = req.flash("error");
+  let success = req.flash("success");
+  res.render('login', {error, success});
 });
 
 router.get('/create-page', isLoggedin, function (req, res, next) {

@@ -3,7 +3,7 @@ const config = require("config")
 const debug = require("debug")('development:mongoose');
 
 mongoose
-    .connect(`${config.get("MONGODB_URI")}/pinterest`)
+    .connect(`${config.get("MONGODB_URI")}pinterest`)
     .then(function () {
         debug('database connected !');
     })

@@ -32,10 +32,11 @@ router.post('/login', async function(req, res){
   if (await bcrypt.compare(req.body.password, user.password)){
     let token = generateToken(user)
     res.cookie("token", token);
+    req.flash("success", "You are logged in")
     res.redirect("/");
   }else{
     req.flash("error", "Something went wrong")
-    res.redirect("/");
+    res.redirect("/login");
   }
 });
 
