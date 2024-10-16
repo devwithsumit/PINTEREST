@@ -12,9 +12,14 @@
     <input type="text" placeholder="Search" class="outline-none flex items-center bg-none bg-transparent">
   </div>
   <div class="nav-right">
-    <div class="buttons flex text-sm items-center gap-4">
-      <a href="/profile/created" class="ml-5 p-2 w-10 border-2 border-opacity-0 hover:border-opacity-100 border-fuchsia-950 aspect-square text-center rounded-full bg-fuchsia-600 hover:bg-fuchsia-700 flex items-center justify-center text-white uppercase"><%= user.fullname.charAt(0) %></a>
-      <a href="/logout" class="bg-red-600 text-white px-5 py-3 h-fit flex items-center justify-center rounded-full whitespace-nowrap hover:bg-red-700">Logout</a>
+    <div class="buttons flex text-base items-center gap-4">
+      <% if (user) { %>
+        <a href="/profile/created" class="ml-5 p-2 text-sm w-10 border-2 border-opacity-0 hover:border-opacity-100 border-fuchsia-950 aspect-square text-center rounded-full bg-fuchsia-600 hover:bg-fuchsia-700 flex items-center justify-center text-white uppercase"><%= user.fullname.charAt(0) %></a>
+        <a href="/logout" class="bg-red-600 text-white px-5 py-3 h-fit flex items-center justify-center rounded-full whitespace-nowrap hover:bg-red-700">Logout</a>
+      <%} else { %>
+        <a href="/login" class="bg-red-600 text-white px-5 py-2 h-fit flex items-center justify-center rounded-full whitespace-nowrap hover:bg-red-700">Login</a>
+        <a href="/signup" class="bg-gray-200 px-5 py-2 flex items-center justify-center rounded-full whitespace-nowrap hover:bg-gray-300">Sign up</a>
+      <% } %>
     </div>
   </div>
 </div>

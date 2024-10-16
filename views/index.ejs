@@ -1,16 +1,23 @@
 <%- include  ('./partials/header_cdn.ejs') %>
 
 
-  <div id="main" class="px-10">
-    <%- include  ('./partials/navbar.ejs') %>
+<div id="main" class="px-10">
+  <%- include  ('./partials/navbar.ejs') %>
+  <%- include ('./partials/flash.ejs') %>
 
-    <div class="grid main-container mt-10">
-      <% posts.reverse().forEach(post=>{ %>
-        <div class="grid-item">
-          <img src="/uploads/<%= post.image %>" />
+  <div class="grid main-container mt-10 ">
+    <%if (posts.length > 0) {  %>
+    <% posts.reverse().forEach(post=>{ %>
+    <div class="grid-item">
+      <img src="/uploads/<%= post.image %>" />
+    </div>
+    <% }) %>
+    <%}else{ %>
+        <div class="relative h-[70vh] w-full">
+            <h1 class="absolute text-4xl left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">No posts to shows</h1>
         </div>
-      <% }) %>
-      <!--     
+    <% } %>
+    <!--     
         <div class="grid-item">
             <img
                 src="https://images.unsplash.com/photo-1693140301742-b9349aafca29?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2OTUzNDIyODN8&ixlib=rb-4.0.3&q=85" />
@@ -124,7 +131,7 @@
             <img
                 src="https://images.unsplash.com/photo-1695010800005-50cb50823351?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2OTUzNDIzNzl8&ixlib=rb-4.0.3&q=85" />
         </div> -->
-    </div>
   </div>
+</div>
 
 <%- include ('./partials/footer_cdn.ejs') %>

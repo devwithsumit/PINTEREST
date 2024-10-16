@@ -11,7 +11,7 @@
       <p class="my-2 text-center text-base text-gray-400"> @ <%= user.email.split("@")[0] %></p>
       <div class="flex mt-2 font-medium items-center gap-2">
         <a href="/share" class="px-5 py-2 text-center rounded-full text-base bg-gray-200 flex items-center justify-center capitalize">Share</a>
-        <a href="/edit" class="px-5 py-2 text-center rounded-full text-base bg-gray-200 flex items-center justify-center capitalize">Edit Profile</a>
+        <a href="/edit" class="px-5 py-2 text-center rounded-full text-base bg-gray-200 flex items-center justify-center capitalize whitespace-nowrap">Edit Profile</a>
       </div>
     </div>
   </div>
@@ -26,6 +26,9 @@
       <img src="/uploads/<%= post.image %>" />
     </div>
     <% }) %>
+    <% if(posts.length == 0){ %>
+    <div>No post created</div>
+    <%  }%>
   </div>
 </div>
 
